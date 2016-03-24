@@ -1,0 +1,141 @@
+@import "../less/common.less";
+@import "../less/mixins.less";
+@import '../bower_components/font-awesome/less/font-awesome.less';
+@import '../bower_components/simple-line-icons/less/simple-line-icons.less';
+
+@fa-font-path: '../bower_components/font-awesome/fonts';
+@simple-line-font-path:'../bower_components/simple-line-icons/fonts/';
+
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video ,input{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  -webkit-font-smoothing: antialiased;
+}
+* {
+  &:before,&:after{
+    .box-sizing(border-box);
+  }
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  .center-block();
+}
+body{
+  font-weight: 400;
+  color:@main-font-color;
+  margin:0;
+  padding:0;
+  font: @font;
+}
+
+a {
+  background-color: transparent;
+  font: @font;
+}
+a:active,
+a:hover ,button,input,input:focus{
+  outline: 0;
+}
+input{
+  border:0;
+}
+li{
+  list-style: none;
+}
+h2{
+  font-weight: 800;
+  letter-spacing: .003em;
+  color: @main-font-color;
+}
+h3{
+  font-weight: 800;
+  letter-spacing: .015em;
+}
+a{
+  color: @btn-default-bg-color;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover{
+    color: @btn-default-bg-hover-color;
+  }
+}
+button{
+  border: 0;
+  &.clear{
+    background: 0 0;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+  }
+}
+input{
+  .placeholder(@main-input-placeholder-color);
+  padding: 8px;
+  border: 0;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: .029em;
+  line-height: 16px;
+  outline: 0;
+}
+input.error {
+  color: @input-error-color;
+}
+hr{
+  background-color: @main-bg-color;
+  border: 0;
+  margin: 0;
+  height: 2px;
+  clear: both;
+}
+*{
+  outline: none;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  //  -webkit-perspective: 1000;
+  //  -moz-perspective: 1000;
+  //  -ms-perspective: 1000;
+  //  perspective: 1000;
+}
+html{
+  & , body{
+    .size(100%, 100%);
+  }
+  .venvy-content{
+    .size(100%,calc(~ '100% - 40px'));
+  }
+}
+@import "../less/style";
+@import "main/main";
+@import "channels/channels";
+@import "../less/buttons";
+@import "../less/footer";
+@import "modal/modal";
+@import "video/play";
+@import "global/search";
+@import "mobile/mobile";

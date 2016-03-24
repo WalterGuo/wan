@@ -1,0 +1,58 @@
+extends ../layout/layout.jade
+block content
+    section.venvy-expore-header.channels
+        section.venvy-expore-header-content(ng-class='cls')
+            img(ng-src='{{src}}')
+    section.venvy-expore-content
+        section.channels-icon-box
+            div.channels-icon(ng-class='cls')
+                img(ng-src='{{src}}')
+            h2 {{title}}
+        section.channels-container(ng-controller="scrollPlayController")
+            section.channels-item.waypoint(ng-repeat="ss in series")
+                section.card
+                    div.card-header
+                        .card-user-info
+                            .card-avatar
+                                img(ng-src="{{ss.localInfo.user.avatar}}")
+                            .card-username
+                                a(href="javascript:void(0)") {{ss.localInfo.user.name}}
+                            .card-description {{ss.localInfo.user.desc}}
+                    div.card-content
+                        div.venvy-video-container(style="background-image:url('{{ss.localInfo.cover}}')",venvy-player-url='{{ss.localInfo.url}}',data-venvy-player-id='{{ss._id}}',data-venvy-player-title='{{ss.title}}',venvy-video-scroll-play,ng-click="playerModal($event)")
+                    div.card-footer
+                        .card-description {{ss.title}}
+                        hr
+                        .card-icon
+                            .post-actions
+                                a(href="javascript:void(0)")
+                                    i.icon-heart
+                                    span.caption {{ss.views*3}}
+                                a(href="javascript:void(0)")
+                                    i.icon-refresh
+                                    span.caption {{ss.views}}
+                                a(href="javascript:void(0)")
+                                    i.icon-arrow-up
+                                    span.caption Share
+                        hr
+                        .card-comments
+                            .comments
+            section.page-box
+              button.vbtn(ng-click="nextPage()" ng-class='cls' ng-show="ifNext") 加载更多
+    script.
+
+        $(function(){
+            $('#venvy-header-navbar').addClass('transparent channels');
+            $('.venvy-wrapper').addClass('channels-wrapper');
+            $(document).on('scroll', function () {
+                var _bottom = $('.venvy-expore-header')[0].getBoundingClientRect().bottom;
+                var _top = $(this).scrollTop();
+                if (_top >= _bottom - $('#venvy-header-navbar').height()) {
+                    $('#venvy-header-navbar').removeClass('transparent channels');
+                    $('.channels-icon-box').addClass('show');
+                } else {
+                    $('#venvy-header-navbar').addClass('transparent channels');
+                    $('.channels-icon-box').removeClass('show');
+                }
+            })
+        })

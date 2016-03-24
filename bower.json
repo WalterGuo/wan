@@ -1,0 +1,41 @@
+{
+  "name": "venvy",
+  "version": "2.0.0",
+  "homepage": "https://github.com/Venvy-dev/venvy2",
+  "authors": [
+    "linyo <w2008second@163.com>"
+  ],
+  "description": "venvy new sites",
+  "keywords": [
+    "venvy",
+    "sites"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.0",
+    "angular-resource": "~1.4.0",
+    "font-awesome": "~4.3.0",
+    "validator-js": "~3.40.0",
+    "animate.css": "~3.3.0",
+    "jquery": "~2.1.4",
+    "angular-ui-router": "~0.2.15",
+    "requirejs": "~2.1.18",
+    "simple-line-icons": "~1.0.0",
+    "angular-cookies": "~1.4.1",
+    "moment": "~2.10.3",
+    "angular-smarty": "*",
+    "zeroclipboard": "~2.2.0",
+    "jquery-qrcode": "*",
+    "waypoints": "~3.1.1",
+    "css3-mediaqueries-js": "~1.0.0",
+    "wechat.js": "~0.1.3",
+    "two.js": "~0.4.0"
+  }
+}

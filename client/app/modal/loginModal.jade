@@ -1,0 +1,27 @@
+article.modal-card
+    div.card-content#login-modal
+        .icon-logo
+        .tooltip-text Please sign into your Venvy account.
+        .sign-in
+            .message.error {{message}}
+            .other-account-login-box
+                a(href="/auth/weibo",target='_self').vbtn.clear
+                    i.fa.fa-weibo
+                    | 微博登录
+                a(href="/auth/qq",target='_self').vbtn.clear
+                    | QQ 登录
+                    i.fa.fa-qq
+            p or
+            form(id="login",name="venvyLogin",ng-submit="vlogin(venvyLogin)")
+                input(placeholder="Email/Phone",name="email",type="text",ng-model="user.mail")
+                input(placeholder="Password",name="password",type="password",ng-model="user.pwd")
+                .submit-container
+                    span.foget-pwd
+                        a(href="javascript:void(0)") 忘记密码？
+                    button.vbtn(type="submit") 登录
+    section.sign-up
+        p Don't have an account? Download the app to sign up!
+        div.download-buttons-box
+            a.btn.wantv(href="https://itunes.apple.com/cn/app/wantv-tu-cao-biao-qian-gou/id978691716?l=en&mt=8")
+            a.btn.bookmark(href='javascript:(function()%7Bfunction callback()%7B%7Dvar s%3Ddocument.createElement("script")%3Bs.addEventListener%3Fs.addEventListener("load",callback,!1):s.readyState%26%26(s.onreadystatechange%3Dcallback),s.src%3D"http://wantv.me/public/bookmarklet.js",s.charset%3D"UTF-8",document.body.appendChild(s)%3B%7D)()',title="云视链" ,ICON="") 云视链
+            a.btn.videojj(href="http://videojj.com")

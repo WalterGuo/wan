@@ -1,0 +1,18 @@
+div.view-all-box(ng-class="{selected: 0 == selected}")
+    a(href="javascript:void(0);" ,ng-href="/search/{{prefix}}",target="_blank") 查看所有结果：{{prefix}}
+div.view-results
+    ul.results-ul
+        li(ng-repeat="se in suggestions.seriess"  ng-class="{selected: $index == selected}"  )
+            a(href="javascript:void(0)")
+                i.fa.fa-tag.fa-fw
+                span {{se.title}}
+    ul.results-ul
+        li(ng-repeat="users in suggestions.users" ng-class="{selected: $index == selected}" )
+            a(ng-href="/user/other?u={{users._id}}",target='_blank')
+                img.avatar(ng-src="{{users.avatar}}")
+                span {{users.name}}
+    ul.results-ul
+        li(ng-repeat="videos in suggestions.videos" ng-class="{selected: $index == selected}")
+            a(ng-href="/v/play/{{videos._id}}",target='_blank')
+                i.fa.fa-play-circle.fa-fw
+                span {{videos.title}}

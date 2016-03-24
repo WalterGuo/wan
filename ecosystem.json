@@ -1,0 +1,13 @@
+{
+  "apps": [{
+    "name": "virgo",
+    "script": "dist/server/app.js",
+    "env": {
+      "NODE_ENV": "production"
+    },
+    "instances": 0,
+    "exec_mode": "cluster_mode",
+    "port": 8080
+
+  }]
+}

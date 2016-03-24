@@ -1,0 +1,552 @@
+extends ../layout/layout.jade
+block content
+    section.venvy-expore-header
+        section.video-container
+            section.video-content
+                video#sourcevid(autoplay,controls="false",webkit-playsinline,loop="true",preload="auto",defaultMuted="false",muted="false")
+                    source(src="http://7xi4ig.com2.z0.glb.qiniucdn.com/Sequence 01.mp4")
+                    //canvas(id="copy")
+            //canvas.video-canvas(id="output")
+            section.logo-container
+                div.logo-content
+                    a.logo-link(href="/")
+                        img(src="assets/images/logo-wantv.png")
+                    p.subTitle Explore a world of smart videos.
+                    div.download-buttons-box
+                        div.btn(onclick="window.open('https://itunes.apple.com/cn/app/wantv-tu-cao-biao-qian-gou/id978691716?l=en&mt=8')")
+                            span iOS App
+                            i.fa.fa-apple
+                        div.btn(onclick="window.open('http://android.myapp.com/myapp/detail.htm?apkName=me.wantv')")
+                            span Andriod App
+                            i.fa.fa-android
+                        div.btn(onclick="window.open('http://videojj.com')")
+                            span Video++
+                            i.fa.fa-windows
+    section.venvy-expore-search
+        section.venvy-input-box(ng-controller="superSearchController")
+            input.venvy-search-input(type="text",placeholder="搜索" selection-made="selectionMade" search-input list-items="suggestions" ng-model="prefix" index="selected")
+            button.vbtn-search.clear(ng-click='submitClicked()')
+                i.fa.fa-search
+            div(search-suggestions-box)
+    section.venvy-expore-content
+        aside.aside-bar
+            section.channels-container
+                h3 Channels
+                div.channels-content
+                    a(href="/channels/animals/{{channels[0]._id}}",target="_blank",data-name="{{channels[0].name}}")
+                        div.channels-item.animals
+                            img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Animals_trans@2x.png")
+                    a(href="/channels/art/{{channels[1]._id}}",target="_blank",data-name="{{channels[1].name}}")
+                        div.channels-item.art
+                            img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Art_trans@2x.png")
+                    a(href="/channels/comedy/{{channels[2]._id}}",target="_blank",data-name="{{channels[2].name}}")
+                        div.channels-item.comedy
+                            img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Comedy_trans@2x.png")
+                    a(href="/channels/fashion/{{channels[3]._id}}",target="_blank",data-name="{{channels[3].name}}")
+                        div.channels-item.fashion
+                            img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Fashion_trans@2x.png")
+                    a(href="/channels/family/{{channels[4]._id}}",target="_blank",data-name="{{channels[4].name}}")
+                        div.channels-item.family
+                            img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Family_trans@2x.png")
+                    a(href="/channels/diy/{{channels[5]._id}}",target="_blank",data-name="{{channels[5].name}}")
+                        div.channels-item.diy
+                            img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/DIY_trans@2x.png")
+                    a(href="/channels/food/{{channels[6]._id}}",target="_blank",data-name="{{channels[6].name}}")
+                        div.channels-item.food
+                            img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Food_trans@2x.png")
+                    a(href="/channels/news/{{channels[7]._id}}",target="_blank",data-name="{{channels[7].name}}")
+                        div.channels-item.news
+                            img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/News_trans@2x.png")
+                    a(href="/channels/science/{{channels[8]._id}}",target="_blank",data-name="{{channels[8].name}}")
+                        div.channels-item.science
+                            img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Science_trans@2x.png")
+                    a(href="/channels/music/{{channels[9]._id}}",target="_blank",data-name="{{channels[9].name}}")
+                        div.channels-item.music
+                            img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Music_trans@2x.png")
+                    a(href="/channels/places/{{channels[10]._id}}",target="_blank",data-name="{{channels[10].name}}")
+                        div.channels-item.places
+                            img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Places_trans@2x.png")
+                    a(href="/channels/sports/{{channels[11]._id}}",target="_blank",data-name="{{channels[11].name}}")
+                        div.channels-item.sports
+                            img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Sports_trans@2x.png")
+            section.venvy-module-block
+                header.module-block-header
+                    a(href="javascript:void(0);")
+                        i.fa.fa-star
+                        h3 Popular Now
+                section.module-block-container
+                    section.module-block-item.small
+                        div.venvy-video-container(style="background-image:url('http://7u2n0p.com2.z0.glb.qiniucdn.com/dad519x.png')",data-venvy-player-url="http://v.youku.com/v_show/id_XNzI1NDEwNTg0.html?from=y1.7-2",data-venvy-player-id="554d95dc88fcb0aa0aeed88e",ng-click="playerModal($event)")
+                        div.item-info
+                            div.user-name
+                                a(href="/user/other?u=54f58aa3abc031cf49411f29",target="_blank") 公子酱
+                            div.user-description
+                                | 当我们需要爸爸时
+                    section.module-block-item.small
+                        div.venvy-video-container(style="background-image:url('http://7u2n0p.com2.z0.glb.qiniucdn.com/beiying619x.jpg')",data-venvy-player-url="http://v.youku.com/v_show/id_XMTI2MzU1MjM2OA==.html?f=23559442&from=y1.3-idx-uhome-1519-20887.205908-205909-205917.4-1",data-venvy-player-id="5580e0113530fb38620765f9",ng-click="playerModal($event)")
+                        div.item-info
+                            div.user-name
+                                a(href="/user/other?u=54f90b66747d5b9f5fc58315",target="_blank") taeyong
+                            div.user-description
+                                | 6分钟读懂父亲的背影
+                    section.module-block-item.small
+                        div.venvy-video-container(style="background-image:url('http://7u2n0p.com2.z0.glb.qiniucdn.com/yh619x.jpg')",data-venvy-player-url="http://www.tudou.com/albumplay/92J2xqpSxWY.html",data-venvy-player-id="5524fc85aefb539b66c2dac8",ng-click="playerModal($event)")
+                        div.item-info
+                            div.user-name
+                                a(href="/user/other?u=54f401601f78eb234694fa4a",target="_blank") 土豆
+                            div.user-description
+                                | 银魂-第266话 暂停未必能换来转机
+                    section.module-block-item.small
+                        div.venvy-video-container(style="background-image:url('http://7u2n0p.com2.z0.glb.qiniucdn.com/sea619x.jpg')",data-venvy-player-url="http://v.youku.com/v_show/id_XMTI1NTQyMzM2MA==.html?from=y1.3-jilupian-shouye-2867-10157.90219-89802.3-1",data-venvy-player-id="55767fe05be99f8a07023557",ng-click="playerModal($event)")
+                        div.item-info
+                            div.user-name
+                                a(href="/user/other?u=54f856171fbeee341fc76f16",target="_blank") QXT
+                            div.user-description
+                                | 15万张照片成就60秒海底慢生活
+            section.venvy-module-block
+                header.module-block-header
+                    a(href="javascript:void(0);")
+                        i.fa.fa-th-list
+                        h3 Player List
+                section.module-block-container
+                    section.module-block-item.small
+                        div.venvy-video-container(style="background-image:url('http://7u2n0p.com2.z0.glb.qiniucdn.com/hls614ax.png')",data-venvy-player-url="http://v.youku.com/v_show/id_XNDIxNzEzNTI4.html?from=y1.3-dv-rgg-239-10775.94598.8-1",data-venvy-player-id="556bd3743c5a445640c2b1e2",ng-click="playerModal($event)")
+                        div.item-info
+                            div.user-description
+                                | 『电影人生』一个80光年的不老童年
+                    section.module-block-item.small
+                        div.venvy-video-container(style="background-image:url('http://7u2n0p.com2.z0.glb.qiniucdn.com/kaijiu619x.jpg')",data-venvy-player-url="http://v.youku.com/v_show/id_XNzE3MzMxMzMy.html?from=y1.7-1.2",data-venvy-player-id="5560a3b84fdbff6c2a03990c",ng-click="playerModal($event)")
+                        div.item-info
+                            div.user-description
+                                | 夏天到了，教你N种开酒瓶的方式
+                    section.module-block-item.small
+                        div.venvy-video-container(style="background-image:url('http://7u2n0p.com2.z0.glb.qiniucdn.com/qingc619x.jpg')",data-venvy-player-url="http://v.youku.com/v_show/id_XMTI1NDgzNTI5Mg==.html?f=25813973&ev=4&from=y1.3-idx-uhome-1519-20887.205805-205902.7-4",data-venvy-player-id="557cfa75ed5a12ea0922a961",ng-click="playerModal($event)")
+                        div.item-info
+                            div.user-description
+                                | 唯美感动毕业MV《青春不散场》
+                    section.module-block-item.small
+                        div.venvy-video-container(style="background-image:url('http://7u2n0p.com2.z0.glb.qiniucdn.com/seass619x.jpg')",data-venvy-player-url="http://v.youku.com/v_show/id_XOTQ0MjQyNzY0.html?from=y1.7-1.2",data-venvy-player-id="5540b3b6e0ac79a44f599810",ng-click="playerModal($event)")
+                        div.item-info
+                            div.user-description
+                                | 一分钟教你识遍海底生物
+                    section.module-block-item.small
+                        div.venvy-video-container(style="background-image:url('http://7u2n0p.com2.z0.glb.qiniucdn.com/gucci619x.jpg')",data-venvy-player-url="http://v.youku.com/v_show/id_XNjcxMjYxMTk2.html",data-venvy-player-id="54f7d725930572ee3dcce867",ng-click="playerModal($event)")
+                        div.item-info
+                            div.user-description
+                                | 美女教你读大牌
+            section.venvy-module-block.tag
+                header.module-block-header
+                    a(href="javascript:void(0);")
+                        i.fa.fa-tags
+                        h3 Trending Tags
+                section.module-block-container
+                    div.tv-item
+                        a(href="/channels/animals/{{channels[0]._id}}",target="_blank") # {{channels[0].name}}
+                        a(href="jvascript:void(0)").tv-icon
+                            i.fa.fa-video-camera
+                    div.tv-item
+                        a(href="/channels/art/{{channels[1]._id}}",target="_blank") # {{channels[1].name}}
+                        a(href="jvascript:void(0)").tv-icon
+                            i.fa.fa-video-camera
+                    div.tv-item
+                        a(href="/channels/comedy/{{channels[2]._id}}",target="_blank") # {{channels[2].name}}
+                        a(href="jvascript:void(0)").tv-icon
+                            i.fa.fa-video-camera
+                    div.tv-item
+                        a(href="/channels/fashion/{{channels[3]._id}}",target="_blank") # {{channels[3].name}}
+                        a(href="jvascript:void(0)").tv-icon
+                            i.fa.fa-video-camera
+                    div.tv-item
+                        a(href="/channels/family/{{channels[4]._id}}",target="_blank") # {{channels[4].name}}
+                        a(href="jvascript:void(0)").tv-icon
+                            i.fa.fa-video-camera
+                    div.tv-item
+                        a(href="/channels/diy/{{channels[5]._id}}",target="_blank") # {{channels[5].name}}
+                        a(href="jvascript:void(0)").tv-icon
+                            i.fa.fa-video-camera
+                    div.tv-item
+                        a(href="/channels/food/{{channels[6]._id}}",target="_blank") # {{channels[6].name}}
+                        a(href="jvascript:void(0)").tv-icon
+                            i.fa.fa-video-camera
+                    div.tv-item
+                        a(href="/channels/news/{{channels[7]._id}}") # {{channels[7].name}}
+                        a(href="jvascript:void(0)").tv-icon
+                            i.fa.fa-video-camera
+        article.article-content
+            section.venvy-module-block
+                header.module-block-header
+                    a(href="javascript:void(0);")
+                        i.fa.fa-th-list
+                        h3 Player List
+                section.module-block-container
+                    section.module-block-item.one-up
+                        div.venvy-video-container(style="background-image:url('http://7u2n0p.com2.z0.glb.qiniucdn.com/mar619x.png')",data-venvy-player-url="http://v.youku.com/v_show/id_XODcyMjQ4NDI0.html?from=s1.8-1-1.2",data-venvy-player-id="554ad353ca47e81610d807ee",ng-click="playerModal($event)")
+                        div.item-info
+                            div.user-name
+                                a(href="/v/play/554ad353ca47e81610d807ee",target="_blank")
+                                    h2 Maroon 5乐队新单Sugar超清mv
+                            div.user-description
+                                |婚礼上出现这个你惊喜么
+                            div.post-actions
+                                button.clear.post-button
+                                    i.fa.fa-weibo
+                                button.clear.post-button
+                                    i.fa.fa-qq
+                            div.loop-count(venvy-video-loop,v-id="554ad353ca47e81610d807ee")
+                                | 777747470 Loops
+            article.venvy-module-block
+                header.module-block-header
+                    a(href="javascript:void(0);")
+                        div.img-icon
+                            img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Places_trans@2x.png")
+                        h3 Featured in Places
+                section.module-block-container
+                    section.module-block-item.flex-view
+                        section.flex-view-item
+                            div.venvy-video-container(style="background-image:url('http://7u2n0p.com2.z0.glb.qiniucdn.com/shaq619x.jpg')",data-venvy-player-url="http://www.letv.com/ptv/vplay/22657557.html",data-venvy-player-id="554874962941354e0b1ff0de",ng-click="playerModal($event)")
+                            div.item-info
+                                div.avatar-user-name
+                                    .avatar
+                                        a(href="/user/other?u=54ffa3df087d2ce274b618a9")
+                                            img(src="http://cdn.wantv.me/54ffa3df087d2ce274b618a9/1433075340866.jpg")
+                                    .user-name
+                                        a(href="/user/other?u=54ffa3df087d2ce274b618a9",target="_blank") 姽婳
+                                div.user-description
+                                    | 詹皇逆天爆头骑士二将激吻
+                                div.post-actions
+                                    button.clear.post-button
+                                        i.fa.fa-weibo
+                                    button.clear.post-button
+                                        i.fa.fa-qq
+                                div.loop-count(venvy-video-loop,v-id="554874962941354e0b1ff0de")
+                                    | 2000070 Loops
+                        section.flex-view-item
+                            div.venvy-video-container(style="background-image:url('http://7u2n0p.com2.z0.glb.qiniucdn.com/joyce619x.jpg')",data-venvy-player-url="http://v.youku.com/v_show/id_XNzU2MzQ3MTM2.html?from=s1.8-1-1.2",data-venvy-player-id="5539baeec33d2dc6517626bf",ng-click="playerModal($event)")
+                            div.item-info
+                                div.avatar-user-name
+                                    .avatar
+                                        a(href="/user/other?u=54f91c511ba92cab0c962818",target="_blank")
+                                            img(src="http://cdn.wantv.me/54f91c511ba92cab0c962818/1433388321007.jpg")
+                                    .user-name
+                                        a(href="/user/other?u=54f91c511ba92cab0c962818",target="_blank") Taemin
+                                div.user-description
+                                    | 清纯妹子演绎 我不是韩国人
+                                div.post-actions
+                                    button.clear.post-button
+                                        i.fa.fa-weibo
+                                    button.clear.post-button
+                                        i.fa.fa-qq
+                                div.loop-count(venvy-video-loop,v-id="5539baeec33d2dc6517626bf")
+                                    | 400070 Loops
+                        section.flex-view-item
+                            div.venvy-video-container(style="background-image:url('http://7u2n0p.com2.z0.glb.qiniucdn.com/modu619x.jpg')",data-venvy-player-url="http://v.youku.com/v_show/id_XOTQ4NTEzNDcy.html",data-venvy-player-id="554ac8e31499e92c08717ab9",ng-click="playerModal($event)")
+                            div.item-info
+                                div.avatar-user-name
+                                    .avatar
+                                        a(href="/user/other?u=54fd116da2e363d009e1e596",target="_blank")
+                                            img(src="http://cdn.wantv.me/54fd116da2e363d009e1e596/1433387518873.jpg")
+                                    .user-name
+                                        a(href="/user/other?u=54fd116da2e363d009e1e596",target="_blank") Hyun A
+                                div.user-description
+                                    | 魔都魅影—带你看上海
+                                div.post-actions
+                                    button.clear.post-button
+                                        i.fa.fa-weibo
+                                    button.clear.post-button
+                                        i.fa.fa-qq
+                                div.loop-count(venvy-video-loop,v-id="554ac8e31499e92c08717ab9")
+                                    | 2000070 Loops
+            article.venvy-module-block
+                header.module-block-header
+                    a(href="javascript:void(0);")
+                        i.fa.fa-user
+                        h3 Featured Stars
+                section.module-block-container
+                    section.module-block-item
+                        .user-container
+                            .user-info
+                                .avatar
+                                    a(href="/user/other?u=54fd122ca2e363d009e1e5c7",target="_blank")
+                                        img(src="http://cdn.wantv.me/54fd122ca2e363d009e1e5c7/1433387352589.jpg")
+                                .user-name
+                                    a(href="/user/other?u=54fd122ca2e363d009e1e5c7",target="_blank") Narsha
+                        .user-container
+                            .user-info
+                                .avatar
+                                    a(href="/user/other?u=54f90ca920d8f4e63f4461de",target="_blank")
+                                        img(src="http://cdn.wantv.me/54f90ca920d8f4e63f4461de/1433388276443.jpg")
+                                .user-name
+                                    a(href="/user/other?u=54f90ca920d8f4e63f4461de",target="_blank") Irene
+                        .user-container
+                            .user-info
+                                .avatar
+                                    a(href="/user/other?u=5524eb2addb022e1c6d5953b",target="_blank")
+                                        img(src="http://cdn.wantv.me/5524eb2addb022e1c6d5953b/1432536797977.jpg")
+                                .user-name
+                                    a(href="/user/other?u=5524eb2addb022e1c6d5953b",target="_blank") 小肚腩
+                        .user-container
+                            .user-info
+                                .avatar
+                                    a(href="/user/other?u=54fd1097a2e363d009e1e593",target="_blank")
+                                        img(src="http://cdn.wantv.me/54fd1097a2e363d009e1e593/1433387751311.jpg")
+                                .user-name
+                                    a(href="/user/other?u=54fd1097a2e363d009e1e593",target="_blank") Kris
+            section.venvy-module-block
+                header.module-block-header
+                    a(href="javascript:void(0);")
+                        i.fa.fa-th-list
+                        h3 Player List
+                section.module-block-container
+                    section.module-block-item.one-up
+                        div.venvy-video-container(style="background-image:url('http://7u2n0p.com2.z0.glb.qiniucdn.com/shaonianban.png')",data-venvy-player-url='http://www.letv.com/ptv/vplay/22790666.html#vid=22790666',data-venvy-player-id="55767fe05be99f8a07023557",ng-click="playerModal($event)")
+                        div.item-info
+                            div.user-name
+                                a(href="/v/play/55767fe05be99f8a07023557",target="_blank")
+                                    h2 知天文晓地理就是不懂青春期
+                            div.user-description
+                                | 你曾是少年#少年班终极预告
+                            div.post-actions
+                                button.clear.post-button
+                                    i.fa.fa-weibo
+                                button.clear.post-button
+                                    i.fa.fa-qq
+                            div.loop-count(venvy-video-loop,v-id="55767fe05be99f8a07023557")
+                                | 2000070 Loops
+            article.venvy-module-block
+                header.module-block-header
+                    a(href="javascript:void(0);")
+                        div.img-icon
+                            img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Places_trans@2x.png")
+                        h3 Featured in Places
+                section.module-block-container
+                    section.module-block-item.flex-view
+                        section.flex-view-item
+                            div.venvy-video-container(style="background-image:url('http://7u2n0p.com2.z0.glb.qiniucdn.com/wuxia619x.jpg')",data-venvy-player-url='http://v.youku.com/v_show/id_XMzMwMzc1MjIw.html?firsttime=0&from=y1.4-2',data-venvy-player-id="55536c326a97064254425425",ng-click="playerModal($event)")
+                            div.item-info
+                                div.avatar-user-name
+                                    .avatar
+                                        a(href="/user/other?u=54f134d5d44fb7d4588d87ae",target="_blank")
+                                            img(src="http://cdn.wantv.me/54f134d5d44fb7d4588d87ae/1428393348918.jpg")
+                                    .user-name
+                                        a(href="/user/other?u=54f134d5d44fb7d4588d87ae",target="_blank") 不要cha我
+                                div.user-description
+                                    | 香港电影·江湖笑
+                                div.post-actions
+                                    button.clear.post-button
+                                        i.fa.fa-weibo
+                                    button.clear.post-button
+                                        i.fa.fa-qq
+                                div.loop-count(venvy-video-loop,v-id="55536c326a97064254425425")
+                                    | 20000370 Loops
+                        section.flex-view-item
+                            div.venvy-video-container(style="background-image:url('http://7u2n0p.com2.z0.glb.qiniucdn.com/bettle619x.jpg')",data-venvy-player-url='http://v.qq.com/page/y/t/3/y0140044nt3.html',data-venvy-player-id="552b54f678376cea34cf4032",ng-click="playerModal($event)")
+                            div.item-info
+                                div.avatar-user-name
+                                    .avatar
+                                        a(href="/user/other?u=54ffceab047b7a2648ae6cb1",target="_blank")
+                                            img(src="http://cdn.wantv.me/54ffceab047b7a2648ae6cb1/1428198907586.jpg")
+                                    .user-name
+                                        a(href="/user/other?u=54ffceab047b7a2648ae6cb1",target="_blank") 我来搞笑的
+                                div.user-description
+                                    | 他们过时但仍在世上的每个角落歌唱
+                                div.post-actions
+                                    button.clear.post-button
+                                        i.fa.fa-weibo
+                                    button.clear.post-button
+                                        i.fa.fa-qq
+                                div.loop-count(venvy-video-loop,v-id="552b54f678376cea34cf4032")
+                                    | 11232070 Loops
+                        section.flex-view-item
+                            div.venvy-video-container(style="background-image:url('http://7u2n0p.com2.z0.glb.qiniucdn.com/motion619x.jpg')",data-venvy-player-url='http://www.tudou.com/programs/view/ft8b-XZTqMU',data-venvy-player-id="550b8f06952ae4de01838799",ng-click="playerModal($event)")
+                            div.item-info
+                                div.avatar-user-name
+                                    .avatar
+                                        a(href="/user/other?u=54f9102820d8f4e63f4461df",target="_blank")
+                                            img(src="http://cdn.wantv.me/54f9102820d8f4e63f4461df/1433297968613.jpg")
+                                    .user-name
+                                        a(href="/user/other?u=54f9102820d8f4e63f4461df",target="_blank") 花田半亩
+                                div.user-description
+                                    | 韵动中国 China in Motion 2015
+                                div.post-actions
+                                    button.clear.post-button
+                                        i.fa.fa-weibo
+                                    button.clear.post-button
+                                        i.fa.fa-qq
+                                div.loop-count(venvy-video-loop,v-id="550b8f06952ae4de01838799")
+                                    | 999292929 Loops
+            article.venvy-module-block
+                header.module-block-header
+                    a(href="javascript:void(0);")
+                        i.fa.fa-user
+                        h3 Featured Stars
+                section.module-block-container
+                    section.module-block-item
+                        .user-container
+                            .user-info
+                                .avatar
+                                    a(href="/user/other?u=54fd0b0ca2e363d009e1e3d5",target="_blank")
+                                        img(src="http://cdn.wantv.me/54fd0b0ca2e363d009e1e3d5/1433736323235.jpg")
+                                .user-name
+                                    a(href="/user/other?u=54fd0b0ca2e363d009e1e3d5",target="_blank") 白菜小哥
+                        .user-container
+                            .user-info
+                                .avatar
+                                    a(href="/user/other?u=54fd0b57a2e363d009e1e3da",target="_blank")
+                                        img(src="http://cdn.wantv.me/54ffa755bea73bec74f7afac/1432434666017.jpg")
+                                .user-name
+                                    a(href="/user/other?u=54fd0b57a2e363d009e1e3da",target="_blank") 不悔哥
+                        .user-container
+                            .user-info
+                                .avatar
+                                    a(href="/user/other?u=5501817a72165964741b4fba",target="_blank")
+                                        img(src="http://cdn.wantv.me/54f134398d256f935892d947/1434810633852.jpg")
+                                .user-name
+                                    a(href="/user/other?u=5501817a72165964741b4fba",target="_blank") 道勤
+                        .user-container
+                            .user-info
+                                .avatar
+                                    a(href="/user/other?u=54ffa755bea73bec74f7afac",target="_blank")
+                                        img(src="http://cdn.wantv.me/54ffa755bea73bec74f7afac/1432434666017.jpg")
+                                .user-name
+                                    a(href="/user/other?u=54ffa755bea73bec74f7afac",target="_blank") 茶茶
+            section.venvy-module-block
+                header.module-block-header
+                    a(href="javascript:void(0);")
+                        i.fa.fa-th-list
+                        h3 Player List
+                section.module-block-container
+                    section.module-block-item.one-up
+                        div.venvy-video-container(style="background-image:url('http://7u2n0p.com2.z0.glb.qiniucdn.com/life619x.png')",data-venvy-player-url='http://v.youku.com/v_show/id_XOTYxOTc1MzAw.html',data-venvy-player-id="55653260807b459c6dd57973",ng-click="playerModal($event)")
+                        div.item-info
+                            div.user-name
+                                a(href="/v/play/55653260807b459c6dd57973",target="_blank")
+                                    h2 张靓颖公益广告：不持有生活
+                            div.user-description
+                                | #环境#
+                            div.post-actions
+                                button.clear.post-button
+                                    i.fa.fa-weibo
+                                button.clear.post-button
+                                    i.fa.fa-qq
+                            div.loop-count(venvy-video-loop,v-id="55653260807b459c6dd57973")
+                                | 2000070 Loops
+            article.venvy-module-block
+                header.module-block-header
+                    a(href="javascript:void(0);")
+                        div.img-icon
+                            img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Places_trans@2x.png")
+                        h3 Featured in Places
+                section.module-block-container
+                    section.module-block-item.flex-view
+                        section.flex-view-item
+                            div.venvy-video-container(style="background-image:url('http://7u2n0p.com2.z0.glb.qiniucdn.com/lol617xx.jpg')",data-venvy-player-url='http://v.qq.com/cover/6/6ja58rrthox2wd4.html?vid=o01560gf93f',data-venvy-player-id="5577d91aeb0d8dac3198e31b",ng-click="playerModal($event)")
+                            div.item-info
+                                div.avatar-user-name
+                                    .avatar
+                                        a(href="/user/other?u=54f1423013b78c2f5f3cd848",target="_blank")
+                                            img(src="http://cdn.wantv.me/54f1423013b78c2f5f3cd848/1432010666863.jpg")
+                                    .user-name
+                                        a(href="/user/other?u=54f1423013b78c2f5f3cd848",target="_blank") luzhu
+                                div.user-description
+                                    | 这么劲爆的阵容你值得拥有
+                                div.post-actions
+                                    button.clear.post-button
+                                        i.fa.fa-weibo
+                                    button.clear.post-button
+                                        i.fa.fa-qq
+                                div.loop-count(venvy-video-loop,v-id="5577d91aeb0d8dac3198e31b")
+                                    | 909090070 Loops
+                        section.flex-view-item
+                            div.venvy-video-container(style="background-image:url('http://7u2n0p.com2.z0.glb.qiniucdn.com/significance605ax.png')",data-venvy-player-url='http://v.youku.com/v_show/id_XODg2OTEwNzM2.html?from=y1.2-1-171.3.9-2.1-1-1-8-0',data-venvy-player-id="5510de7436280dd14c20b53b",ng-click="playerModal($event)")
+                            div.item-info
+                                div.avatar-user-name
+                                    .avatar
+                                        a(href="/user/other?u=54fd0acea2e363d009e1e3cc",target="_blank")
+                                            img(src="http://cdn.wantv.me/54fd0acea2e363d009e1e3cc/1432628017499.jpg")
+                                    .user-name
+                                        a(href="/user/other?u=54fd0acea2e363d009e1e3cc",target="_blank") 跟着美图走
+                                div.user-description
+                                    | 绝美世界延时短片《Our True Significance》
+                                div.post-actions
+                                    button.clear.post-button
+                                        i.fa.fa-weibo
+                                    button.clear.post-button
+                                        i.fa.fa-qq
+                                div.loop-count(venvy-video-loop,v-id="5510de7436280dd14c20b53b")
+                                    | 44022070 Loops
+                        section.flex-view-item
+                            div.venvy-video-container(style="background-image:url('http://7u2n0p.com2.z0.glb.qiniucdn.com/zongzi619x.jpg')",data-venvy-player-url='http://v.youku.com/v_show/id_XMTI2NDc2MTczNg==.html?from=s1.8-1-1.2',data-venvy-player-id="558286734dd39a633b15f5f3",ng-click="playerModal($event)")
+                            div.item-info
+                                div.avatar-user-name
+                                    .avatar
+                                        a(href="/user/other?u=54f9150620d8f4e63f4461e9",target="_blank")
+                                            img(src="http://cdn.wantv.me/54f9150620d8f4e63f4461e9/1427078596857.jpg")
+                                    .user-name
+                                        a(href="/user/other?u=54f9150620d8f4e63f4461e9",target="_blank") vangoghgbl
+                                div.user-description
+                                    | 各国老外挑战吃粽子
+                                div.post-actions
+                                    button.clear.post-button
+                                        i.fa.fa-weibo
+                                    button.clear.post-button
+                                        i.fa.fa-qq
+                                div.loop-count(venvy-video-loop,v-id="558286734dd39a633b15f5f3")
+                                    | 78800070 Loops
+            section.venvy-module-block
+                header.module-block-header
+                    a(href="javascript:void(0);")
+                        i.fa.fa-th-list
+                        h3 Player List
+                section.module-block-container
+                    section.module-block-item.one-up
+                        div.venvy-video-container(style="background-image:url('http://7u2n0p.com2.z0.glb.qiniucdn.com/bied619x.jpg')",data-venvy-player-url='http://v.youku.com/v_show/id_XMzc3NzAyMDA0.html?from=s1.8-1-1.2',data-venvy-player-id="552f5de3ca59da2f6cf2c68e",ng-click="playerModal($event)")
+                        div.item-info
+                            div.user-name
+                                a(href="/v/play/552f5de3ca59da2f6cf2c68e",target="_blank")
+                                    h2 世界顶级纪录片
+                            div.user-description
+                                | 《迁徙的鸟》MV
+                            div.post-actions
+                                button.clear.post-button
+                                    i.fa.fa-weibo
+                                button.clear.post-button
+                                    i.fa.fa-qq
+                            div.loop-count(venvy-video-loop,v-id="552f5de3ca59da2f6cf2c68e")
+                                | 2,003,330,070 Loops
+    script.
+        document.addEventListener("WeixinJSBridgeReady", function () {
+            var videoObj = document.getElementById("sourcevid");
+            videoObj.play();
+        }, false);
+        var t = 0;
+        var opa = 1;
+        $(document).on('scroll', function () {
+            var _bottom = $('.venvy-expore-header')[0].getBoundingClientRect().bottom;
+            var _top = $(this).scrollTop();
+
+            if (_top >= _bottom - $('#venvy-header-navbar').height()) {
+                $('#venvy-header-navbar').removeClass('transparent');
+            } else {
+                $('#venvy-header-navbar').addClass('transparent');
+            }
+        })
+        $(function () {
+            $('.channels-content a').hover(function(){
+                $(this).parent().prev().text($(this).data('name'));
+            },function(){
+                $(this).parent().prev().text('Channels');
+            })
+            $('.venvy-wrapper').removeClass('channels-wrapper');
+
+            $('#venvy-header-navbar').addClass('transparent');
+            var videoObj = document.getElementById("sourcevid");
+            /*playerModal($('.venvy-video-container'), {
+                $modal:$('.player-modal'),
+                beforeCallBack: function () {
+                    videoObj.pause();
+                },
+                afterCallBack: function () {
+                    videoObj.play();
+                }
+            });*/
+        })

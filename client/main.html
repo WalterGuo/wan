@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!--if lt IE 7html.no-js.lt-ie9.lt-ie8.lt-ie7
+-->
+<!--if IE 7html.no-js.lt-ie9.lt-ie8
+-->
+<!--if IE 8html.no-js.lt-ie9
+-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" ng-app="venvyApp" ng-controller="appController">
+<!--<![endif]-->
+<head>
+    <meta name="fragment" content="!">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8">
+    <base href="/">
+    <title>玩tv－游戏、综艺、原创，视频标签玩起来，Powered by 云视链</title>
+    <meta name="description"
+          content="玩tv是可戳、可槽、可买、可问的互动视频新世界。吐槽游戏解说神攻略，综艺热剧同款光速追。视频标签互动约pao，用最黑的云视链科技一起来玩视频吧！“玩tv” 手机App限免中。">
+    <meta name="keywords"
+          content="云视链,wantv.me,wantv,玩视频么,玩tv,venvy,视链,小云神器,视频购物,金证济苍,自动视链,视频,购物,科普,社交,吐槽,购物,无广告,神器,视频标签,优酷视频">
+    <meta name="author" content="云视链,Venvy Inc.">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+    <!-- 增加og相关标签属性，便于社交网站抓取页面视频信息 start-->
+    <meta content="video.other" property="og:type">
+    <meta content="{{og_url}}" property="og:url">
+    <meta content="{{video_title}}" property="og:title">
+    <meta content="{{video_image}}" property="og:image">
+    <meta content="{{video_descripttion}}" property="og:description">
+
+    <meta content="video/mp4" property="og:video:type">
+    <meta content="{{video_url}}" property="og:video:url">
+    <meta content="{{video_url}}" property="og:video:secure_url">
+    <meta content="480" property="og:video:width">
+    <meta content="480" property="og:video:height">
+    <!-- build:css({.tmp,client}) venvy/vendor.css -->
+    <link href="bower_components/animate.css/animate.css" rel="stylesheet">
+    <!-- endbuild-->
+
+    <!-- build:css({.tmp,client}) venvy/app.css -->
+    <link rel="stylesheet" href="app/app.css">
+    <!-- injector:css -->
+    <!-- endinjector -->
+    <!-- endbuild -->
+
+    <link href="http://7xjfim.com2.z0.glb.qiniucdn.com/Iva.css" rel="stylesheet">
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?0044538d0a18d393c53da524283412ad";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-61280226-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+<body ng-class="bodyCls">
+<!--if lt IE 7
+<p class="browsehappy">You are using an<strong>outdated</strong>browser. Please<a href="http://browsehappy.com/">upgrade your browser</a>to improve your experience.</p>
+-->
+<section ng-class="wrapper" class="venvy-wrapper" ui-view="">
+
+</section>
+<script src="http://7xjfim.com2.z0.glb.qiniucdn.com/Iva.js"></script>
+<!-- build:js venvy/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/moment/locale/zh-cn.js"></script>
+<script src="bower_components/moment/min/moment-with-locales.js"></script>
+<script src="bower_components/zeroclipboard/dist/ZeroClipboard.js"></script>
+<script src="bower_components/jquery-qrcode/jquery.qrcode.min.js"></script>
+<script src="bower_components/validator-js/validator.js"></script>
+<script src="bower_components/waypoints/lib/jquery.waypoints.js"></script>
+<script src="bower_components/css3-mediaqueries-js/css3-mediaqueries.js"></script>
+<script src="bower_components/wechat.js/wechat.js"></script>
+
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js venvy/venvy.js -->
+<!-- injector:js -->
+
+<script src="app/app.js"></script>
+
+<script src="app/channels/channels.config.js"></script>
+
+<script src="app/channels/channels.controller.js"></script>
+
+<script src="app/global/global.config.js"></script>
+
+<script src="app/global/global.controller.js"></script>
+
+<script src="app/global/search.controller.js"></script>
+
+<script src="app/main/main.controller.js"></script>
+
+<script src="app/mobile/mobile.config.js"></script>
+
+<script src="app/mobile/mobile.controller.js"></script>
+
+<script src="app/mobile/mobile.share.controller.js"></script>
+
+<script src="app/navbar/navbar.controller.js"></script>
+
+<script src="app/modal/playerModal.js"></script>
+
+<script src="app/video/video.config.js"></script>
+
+<script src="app/video/video.play.controller.js"></script>
+
+<script src="components/auth/auth.service.js"></script>
+
+<script src="components/auth/user.service.js"></script>
+
+<script src="components/filters/keyword.filter.js"></script>
+
+<script src="components/filters/moment.filter.js"></script>
+
+<script src="components/filters/url.filter.js"></script>
+
+<script src="components/global/iva.service.js"></script>
+
+<script src="components/global/util.help.service.js"></script>
+
+<script src="components/global/video.help.service.js"></script>
+
+<script src="components/modal/modal.service.js"></script>
+
+<script src="components/search/search.service.js"></script>
+
+<script src="components/video/channel.service.js"></script>
+
+<script src="components/video/video.service.js"></script>
+
+<!-- endinjector -->
+<!-- endbuild -->
+</body>
+</html>

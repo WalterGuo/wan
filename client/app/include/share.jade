@@ -1,0 +1,22 @@
+aside.modal-share-sidebar.animated.fadeInLeft
+    .share-item-box
+        .share-icon.qq-icon
+            a(href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={{eurl}}&title={{title}}&pics={{pic}}&summary=",target="_blank")
+                i.fa.fa-qq
+        .share-text Share
+    .share-item-box
+        .share-icon.weibo-icon 
+            a(ng-href="http://service.weibo.com/share/share.php?title={{title}}&url={{eurl}}&ralateUid=5386710793&appkey=2439530749&pic={{pic}}",target="_blank")
+                i.fa.fa-weibo
+        .share-text Share
+    .share-item-box
+        .share-icon.wechat-icon
+            a(href="javascript:void(0);",target="_blank")
+                i.fa.fa-wechat
+                div(qrcode-text='{{weixinurl}}',venvy-video-qrcode)       
+        .share-text Share
+    .share-item-box
+        .share-icon(venvy-video-copy,zeroclip-text='{{url}}')
+            a(href="javascript:void(0)")
+                i.fa.fa-clipboard
+        .share-text 复制地址

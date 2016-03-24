@@ -1,0 +1,23 @@
+header.logged-out#venvy-header-navbar(ng-controller='NavbarCtrl')
+    section.container
+        .nav-button-box
+            a.active(href='/',target="_blank")
+        .global-search
+            .global-search-content(ng-controller="superSearchController")
+                input(type="search",placeholder="搜索" selection-made="selectionMade" search-input list-items="suggestions" ng-model="prefix" index="selected")
+                button.vbtn-search.clear
+                    i.fa.fa-search
+                div(search-suggestions-box)
+        .login-button-box(ng-hide='user().msg._id')
+            button.vbtn.vbtn-block.small(ng-click="a_login()") 登录
+        .login-in-box(ng-show='user().msg._id')
+            a(href="javascript:void(0)" ,data-toggle="dropdown")
+                img(ng-src="{{user().msg.avatar}}")
+            ul.dropdown-menu.animated.fadeInRight
+                li
+                    span.arrow.top
+                    a(href="/public/venvy/app/user.html#/setting",target="_blank") Setting
+                li.divider
+                li
+                    span.arrow.top
+                    a(href="javascript:void(0)",ng-click="loginout()") Logout

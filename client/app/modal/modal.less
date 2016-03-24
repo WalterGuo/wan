@@ -1,0 +1,249 @@
+.modal {
+  opacity: 0;
+  .transition(all ease-in-out .35s);
+  &.in{
+    opacity: 1;
+  }
+  &.login-modal{
+    text-align: center;
+  }
+  .affix();
+  top: 0;
+  left: 0;
+  .size(100%, 100%);
+//  background: rgba(34, 34, 34, .85);
+  z-index: 10000;
+  .modal-bg{
+    .size(100%, 100%);
+    background: rgba(34, 34, 34, .85);
+    z-index: 10000;
+    .affix();
+    top: 0;
+    left: 0;
+  }
+  .modal-container {
+    z-index: 10001;
+    .size(calc(~'100% - 80px'), calc(~'100% - 80px'));
+    padding: 40px;
+    overflow: hidden;
+    position: relative;
+
+    .modal-card {
+      top: 50%;
+      .translate(0, -50%);
+      position: relative;
+      /* transform: translate(0,0); */
+      background-color: @main-section-bg-color;
+      border-radius: 4px;
+
+    }
+  }
+  &.login-modal .modal-card {
+    .transition(all ease-in-out .35s);
+    .size(360px, auto);
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .015em;
+    line-height: 22px;
+    color: @main-font-9b-color;
+    min-height: 314px;
+    .translate(0, calc(~ '-50% - 45px'));
+    .card-content{
+      padding-top: 65px;
+    }
+    .icon-logo{
+      margin-bottom: 10px;
+      border-radius: 50%;
+      .size(120px,120px);
+      color: @btn-default-bg-color;
+      background-color: @main-section-white-font-color;
+      background-image: url('/assets/images/wanTV.png');
+      background-repeat: no-repeat;
+      background-size:  100% auto;
+      background-position:top center;
+      position: absolute;
+      top: -40px;
+      border:8px solid @main-section-white-font-color;
+      left:50%;
+      .translate(-50%, 0);
+    }
+    .tooltip-text{
+      font-weight: 600;
+      margin: 0 auto 15px;
+    }
+    .message{
+      &.error{
+        color:red;
+      }
+      margin: 0 auto 15px;
+      font-size: 12px;
+    }
+    .sign-in{
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: .015em;
+      line-height: 22px;
+
+      .other-account-login-box{
+        border-radius: 23px;
+        background-color: #55acee;
+        overflow: hidden;
+        & *{
+          color: @main-section-white-font-color;
+          line-height: 22px;
+        }
+        .vbtn{
+          .size(calc(~ '50% - 28px'),100%);
+          padding: 8px 12px;
+          position: relative;
+          &:last-child{
+            border-left: 1px solid @main-section-white-font-color;
+          }
+          &:hover{
+           background-color: #5fc2ff;
+          }
+          i{
+            font-size: 18px;
+          }
+          .fa-weibo{
+            .venvy-left();
+          }
+          .fa-qq{
+            .venvy-right();
+          }
+        }
+      }
+      p{
+        margin: 8px 0;
+        font-size: 16px;
+      }
+      input{
+        margin-bottom: 8px;
+        background-color: @input-bg-color;
+        text-align: left;
+        .size(calc(~ '100% - 16px'),auto);
+        padding:8px;
+      }
+      .submit-container{
+        display: inline-block;
+        position: relative;
+        margin-top: 10px;
+        text-align: left;
+        .size(100%,auto);
+        .foget-pwd{
+          position: absolute;
+          left: 0;
+          top: 50%;
+          margin-left: 5px;
+          margin-top: -.5em;
+          font-size: 12px;
+          font-weight: 400;
+          letter-spacing: .029em;
+          line-height: 16px;
+        }
+        button[type='submit']{
+          text-align: center;
+          .venvy-right();
+          padding: 7px 26px;
+          background-color: @btn-default-bg-color;
+          color: @main-section-white-font-color;
+          border-radius: 23px;
+          font-size: 16px;
+          .font-style();
+          &:hover{
+            background-color: @btn-default-bg-hover-color;
+          }
+        }
+      }
+    }
+  }
+  &.login-modal .sign-up {
+    .size(100%,auto);
+    position: absolute;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: .029em;
+    line-height: 16px;
+    color: @main-section-white-font-color;
+    .center-block();
+    top:calc(~'100% + 35px');
+    left:0px;
+    .download-buttons-box{
+      margin-top: 10px;
+    }
+  }
+}
+.modal-share-sidebar {
+  .affix();
+  left: 0;
+  color: @user-descriptiont-color;
+  opacity: 1;
+  text-align: center;
+  z-index: 2;
+  top: 50%;
+  margin-top: -187px;
+  z-index: 10010;
+  .transition('left .1s ease-out .1s,opacity ease .25s');
+  .share-item-box {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .015em;
+    line-height: 22px;
+    cursor: pointer;
+    height: 70px;
+    margin: 15px 20px;
+    .share-icon {
+      position: relative;
+      .square(42px);
+      border-radius: 50%;
+      background-color: @share-icon-bg-color;
+      &:hover {
+        background-color: @share-icon-bg-hover-color;
+      }
+      &, & a {
+        color: @main-section-white-font-color;
+        font-size: 18px;
+        vertical-align: middle;
+        line-height: 34px;
+      }
+      &.qq-icon {
+        background-color: @share-icon-qq-color;
+      }
+      &.qq-icon:hover {
+        background-color: @share-icon-qq-hover-color;
+      }
+      &.weibo-icon {
+        background-color: @share-icon-weibo-color;
+      }
+      &.weibo-icon:hover {
+        background-color: @share-icon-weibo-hover-color;
+      }
+      &.wechat-icon {
+        background-color: @share-icon-wechat-color;
+      }
+      &.wechat-icon:hover {
+        background-color: @share-icon-wechat-hover-color;
+      }
+    }
+    .share-text {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .015em;
+      line-height: 17px;
+      margin-top: 12px;
+    }
+  }
+}
+.modal-card,.post-card{
+  .size(860px, 480px);
+  @media ( min-width: @screen-lg-min) {
+    .size(960px, 540px);
+  }
+  .center-block();
+  .card-content {
+    .square(100%);
+  }
+}

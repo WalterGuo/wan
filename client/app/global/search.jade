@@ -1,0 +1,44 @@
+section.search-result-box
+    section.search-input-box
+        input(type="text",placeholder="搜索",ng-model="keyword",autofocus,ng-keydown="nextPageInit($event)")
+        button.vbtn-search.clear(ng-click="nextPageInit()")
+            i.fa.fa-search
+    section.search-result-post
+        h2 搜索：{{keyword}}
+    section.search-result-view
+        aside.search-result-item-box
+            div.result-item-content
+                section.result-item-box(class="page-{{pn_u}}",ng-if="users.length>0")
+                    div.result-item-box-title
+                        h4
+                            i.fa.fa-user
+                            |用户
+                    div.result-tiem-box-content(ng-repeat="user in users")
+                        a(ng-href="/user/other?u={{user._id}}",target="_blank")
+                            div.avatar-box
+                                img.avatar(ng-src="{{user.avatar}}")
+                            div.name-box(ng-bind-html="user.name | keywordFilter:keyword")
+                    div.load-more(ng-click="nextPage('u')",ng-show="u_load") Load more
+                section.result-item-box(class="page-{{pn_v}}",ng-if="videos.length>0")
+                    div.result-item-box-title
+                        h4
+                            i.fa.fa-tag.fa-fw
+                            |视频
+                    div.tv-item(ng-repeat="video in videos")
+                        a(ng-href="/v/play/{{video._id}}",target="_blank",ng-bind-html="video.title | keywordFilter:keyword") # 
+                        //- a(href="jvascript:void(0)").tv-icon
+                            i.fa.fa-video-camera
+                    div.load-more(ng-click="nextPage('v')",ng-show="v_load") Load more
+        section.grid-container
+            .grid-item.animated.fadeIn(ng-repeat="series in seriess")
+                .grid-item-content
+                    a(ng-href="/public/venvy/app/main.html#/vs/play/{{series._id}}",target="_blank")
+                      .video-container
+                          img(ng-src="{{series.tudouInfo.picUrl_448x672}}")
+                      .grid-item-video-into.static 
+                        h2(ng-bind-html="series.title | keywordFilter:keyword")
+                      .grid-item-video-into.hover 
+                        h2(ng-bind-html="series.title | keywordFilter:keyword")
+                        div.desc(ng-bind-html="series.group.desc | keywordFilter:keyword")
+            section.page-box(ng-show="s_load")
+              button.vbtn(ng-click="nextPage('s')" ng-class='cls' ) 加载更多

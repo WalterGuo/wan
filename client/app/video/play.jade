@@ -1,0 +1,7 @@
+extends ../layout/layout.jade
+block content
+	include ../include/share.jade
+	section.venvy-player-box
+		section.venvy-player-container
+			article.post-card
+				.card-content#card-player(style="background:url('{{video.cover}}')", venvy-url="{{venvyUrl}}",venvy-type="{{venvyType}}", venvy-iva-box)

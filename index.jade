@@ -1,0 +1,686 @@
+doctype html
+html.no-js(ng-app="venvyApp" ng-controller="appController")
+    head
+        meta(name="fragment",content="!")
+        meta(name="renderer",content="webkit")
+        meta(http-equiv="X-UA-Compatible",content="IE=edge,chrome=1")
+        meta(charset="utf-8")
+        base(href="/")
+        title 玩tv－游戏、综艺、原创，视频标签玩起来，Powered by 云视链
+        meta(name="description",content="玩tv是可戳、可槽、可买、可问的互动视频新世界。吐槽游戏解说神攻略，综艺热剧同款光速追。视频标签互动约pao，用最黑的云视链科技一起来玩视频吧！“玩tv” 手机App限免中。")
+        meta(name="keywords",content="云视链,wantv.me,wantv,玩视频么,玩tv,venvy,视链,小云神器,视频购物,金证济苍,自动视链,视频,购物,科普,社交,吐槽,购物,无广告,神器,视频标签,优酷视频")
+        meta(name="author",content="云视链,Venvy Inc.")
+        meta(name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no")
+        link(rel="shourtcut ico" link="http://wantv.me/favicon.ico")
+        link(href="bower_components/animate.css/animate.css", rel='stylesheet')
+        link(href='app/app.css', rel='stylesheet')
+        link(href="http://7xjfim.com2.z0.glb.qiniucdn.com/Iva.css", rel='stylesheet')
+    body(ng-class="bodyCls")
+        section.venvy-wrapper(ng-class="wrapper")
+            header.logged-out#venvy-header-navbar(ng-controller='NavbarCtrl')
+                section.container
+                    .nav-button-box
+                        a.active(href='/')
+                    .global-search
+                        .global-search-content(ng-controller="superSearchController")
+                            input(type="search",placeholder="搜索" selection-made="selectionMade" search-input list-items="suggestions" ng-model="prefix" index="selected")
+                            button.vbtn-search.clear
+                                i.fa.fa-search
+                            div(search-suggestions-box)
+                    .login-button-box(ng-hide='user().msg._id')
+                        button.vbtn.vbtn-block.small(ng-click="a_login()") 登录
+                    .login-in-box(ng-show='user().msg._id')
+                        a(href="javascript:void(0)" ,data-toggle="dropdown")
+                            img(ng-src="{{user().msg.avatar}}")
+                        ul.dropdown-menu.animated.fadeInRight
+                            li
+                                span.arrow.top
+                                a(href="/public/venvy/app/user.html#/setting",target="_blank") Setting
+                            li.divider
+                            li
+                                a(href="javascript:void(0)",ng-click="loginout()") Logout
+            section.venvy-content(ng-controller="MainCtrl")
+                section.venvy-expore-header
+                    section.video-container
+                        section.video-content
+                            video#sourcevid(autoplay,webkit-playsinline,loop="true",preload="auto",defaultMuted="false",muted="false")
+                                source(src="http://7xi4ig.com2.z0.glb.qiniucdn.com/topvideo/show.mp4")
+                                //canvas(id="copy")
+                        //canvas.video-canvas(id="output")
+                        section.logo-container
+                            div.logo-content
+                                a.logo-link(href="/")
+                                    img(src="assets/images/logo-wantv.png")
+                                p.subTitle Explore a world of smart videos.
+                                div.download-buttons-box
+                                    a.btn.wantv(href='/app/download',target="_blank")
+                                    a.btn.bookmark(href='javascript:(function()%7Bfunction callback()%7B%7Dvar s%3Ddocument.createElement("script")%3Bs.addEventListener%3Fs.addEventListener("load",callback,!1):s.readyState%26%26(s.onreadystatechange%3Dcallback),s.src%3D"http://wantv.me/public/bookmarklet.js",s.charset%3D"UTF-8",document.body.appendChild(s)%3B%7D)()',title="云视链" ,ICON="") 云视链
+                                    a.btn.videojj(href="http://videojj.com" target="_blank")
+                        section.powered-by-wantv
+                          a(href="http://videojj.com",target="_blank")
+                section.venvy-expore-search
+                    section.venvy-input-box(ng-controller="superSearchController")
+                        input.venvy-search-input(type="search",placeholder="搜索" selection-made="selectionMade" search-input list-items="suggestions" ng-model="prefix" index="selected")
+                        button.vbtn-search.clear(ng-click='submitClicked()')
+                            i.fa.fa-search
+                        div(search-suggestions-box)
+                section.venvy-expore-content
+                    aside.aside-bar
+                        section.channels-container
+                            h3 Channels
+                            div.channels-content
+                                a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                    div.channels-item.animals
+                                        img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Animals_trans@2x.png")
+                                a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                    div.channels-item.art
+                                        img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Art_trans@2x.png")
+                                a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                    div.channels-item.comedy
+                                        img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Comedy_trans@2x.png")
+                                a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                    div.channels-item.fashion
+                                        img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Fashion_trans@2x.png")
+                                a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                    div.channels-item.family
+                                        img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Family_trans@2x.png")
+                                a(href="/channels/diy/{{channels[5]._id}}",target="_blank",data-name="{{channels[5].name}}")
+                                    div.channels-item.diy
+                                        img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/DIY_trans@2x.png")
+                                a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                    div.channels-item.food
+                                        img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Food_trans@2x.png")
+                                a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                    div.channels-item.news
+                                        img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/News_trans@2x.png")
+                                a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                    div.channels-item.science
+                                        img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Science_trans@2x.png")
+                                a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                    div.channels-item.music
+                                        img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Music_trans@2x.png")
+                                a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                    div.channels-item.places
+                                        img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Places_trans@2x.png")
+                                a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                    div.channels-item.sports
+                                        img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Sports_trans@2x.png")
+                        section.venvy-module-block
+                            header.module-block-header
+                                a(href="javascript:void(0);")
+                                    i.fa.fa-star
+                                    h3 Popular Now
+                            section.module-block-container
+                                section.module-block-item.small
+                                    div.venvy-video-container(style="background-image:url('http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png')",data-venvy-player-url="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",data-venvy-player-id="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",ng-click="playerModal($event)" data-venvy-player-title="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png")
+                                    div.item-info
+                                        div.user-name
+                                            a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                        div.user-description
+                                            |
+                                section.module-block-item.small
+                                    div.venvy-video-container(style="background-image:url('http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png')",data-venvy-player-url="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png}",data-venvy-player-id="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",data-venvy-player-title="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",ng-click="playerModal($event)")
+                                    div.item-info
+                                        div.user-name
+                                            a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                        div.user-description
+                                            |
+                                section.module-block-item.small
+                                    div.venvy-video-container(style="background-image:url('http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png')",data-venvy-player-url="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",data-venvy-player-id=" ",ng-click="playerModal($event)",data-venvy-player-title=" ")
+                                    div.item-info
+                                        div.user-name
+                                            a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                        div.user-description
+                                            |
+                                section.module-block-item.small
+                                    div.venvy-video-container(style="background-image:url('')",data-venvy-player-url="",data-venvy-player-id="",data-venvy-player-title="",ng-click="playerModal($event)")
+                                    div.item-info
+                                        div.user-name
+                                            a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                        div.user-description
+                                            |
+                        section.venvy-module-block
+                            header.module-block-header
+                                a(href="javascript:void(0);")
+                                    i.fa.fa-th-list
+                                    h3 Player List
+                            section.module-block-container
+                                section.module-block-item.small
+                                    div.venvy-video-container(style="background-image:url('http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png')",data-venvy-player-url="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",data-venvy-player-id=" ",ng-click="playerModal($event)",data-venvy-player-title=" ")
+                                    div.item-info
+                                        div.user-description
+                                            |
+                                section.module-block-item.small
+                                    div.venvy-video-container(style="background-image:url('http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png')",data-venvy-player-url="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",data-venvy-player-id=" ",ng-click="playerModal($event)",data-venvy-player-title=" ")
+                                    div.item-info
+                                        div.user-description
+                                            |
+                                section.module-block-item.small
+                                    div.venvy-video-container(style="background-image:url('http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png')",data-venvy-player-url=" ",data-venvy-player-id=" ",ng-click="playerModal($event)",data-venvy-player-title=" ")
+                                    div.item-info
+                                        div.user-description
+                                            |
+                                section.module-block-item.small
+                                    div.venvy-video-container(style="background-image:url('http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png')",data-venvy-player-url=" http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",data-venvy-player-id=" ",ng-click="playerModal($event)",data-venvy-player-title=" ")
+                                    div.item-info
+                                        div.user-description
+                                            |
+                                section.module-block-item.small
+                                    div.venvy-video-container(style="background-image:url('http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png')",data-venvy-player-url=" ",data-venvy-player-id=" ",ng-click="playerModal($event)",data-venvy-player-title=" ")
+                                    div.item-info
+                                        div.user-description
+                                            |
+                        section.venvy-module-block.tag
+                            header.module-block-header
+                                a(href="javascript:void(0);")
+                                    i.fa.fa-tags
+                                    h3 频道
+                            section.module-block-container
+                                div.tv-item
+                                    a(href="/channels/animals/{{channels[0]._id}}",target="_blank") # {{channels[0].name}}
+                                    a(href="jvascript:void(0)").tv-icon
+                                        i.fa.fa-video-camera
+                                div.tv-item
+                                    a(href="/channels/art/{{channels[1]._id}}",target="_blank") # {{channels[1].name}}
+                                    a(href="jvascript:void(0)").tv-icon
+                                        i.fa.fa-video-camera
+                                div.tv-item
+                                    a(href="/channels/comedy/{{channels[2]._id}}",target="_blank") # {{channels[2].name}}
+                                    a(href="jvascript:void(0)").tv-icon
+                                        i.fa.fa-video-camera
+                                div.tv-item
+                                    a(href="/channels/fashion/{{channels[3]._id}}",target="_blank") # {{channels[3].name}}
+                                    a(href="jvascript:void(0)").tv-icon
+                                        i.fa.fa-video-camera
+                                div.tv-item
+                                    a(href="/channels/family/{{channels[4]._id}}",target="_blank") # {{channels[4].name}}
+                                    a(href="jvascript:void(0)").tv-icon
+                                        i.fa.fa-video-camera
+                                div.tv-item
+                                    a(href="/channels/diy/{{channels[5]._id}}",target="_blank") # {{channels[5].name}}
+                                    a(href="jvascript:void(0)").tv-icon
+                                        i.fa.fa-video-camera
+                                div.tv-item
+                                    a(href="/channels/food/{{channels[6]._id}}",target="_blank") # {{channels[6].name}}
+                                    a(href="jvascript:void(0)").tv-icon
+                                        i.fa.fa-video-camera
+                                div.tv-item
+                                    a(href="/channels/news/{{channels[7]._id}}") # {{channels[7].name}}
+                                    a(href="jvascript:void(0)").tv-icon
+                                        i.fa.fa-video-camera
+                    article.article-content
+                        section.venvy-module-block
+                            header.module-block-header
+                                a(href="javascript:void(0);")
+                                    i.fa.fa-th-list
+                                    h3 热播
+                            section.module-block-container
+                                section.module-block-item.one-up
+                                    div.venvy-video-container(style="background-image:url(' ')",data-venvy-player-url=" ",data-venvy-player-id=" ",ng-click="playerModal($event)",data-venvy-player-title=" ")
+                                    div.item-info
+                                        div.user-name
+                                            a(href=" ",target="_blank")
+                                                h2
+                                        div.user-description
+                                            |
+                                        div.post-actions
+                                            button.clear.post-button
+                                                i.fa.fa-weibo
+                                            button.clear.post-button
+                                                i.fa.fa-qq
+                                        div.loop-count(venvy-video-loop,v-id=" ")
+                                            | 777747470 Loops
+                        article.venvy-module-block
+                            header.module-block-header
+                                a(href="javascript:void(0);")
+                                    div.img-icon
+                                        img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Places_trans@2x.png")
+                                    h3 Featured in Places
+                            section.module-block-container
+                                section.module-block-item.flex-view
+                                    section.flex-view-item
+                                        div.venvy-video-container(style="background-image:url(' ')",data-venvy-player-url=" ",data-venvy-player-id=" ",ng-click="playerModal($event)",data-venvy-player-title=" ")
+                                        div.item-info
+                                            div.avatar-user-name
+                                                .avatar
+                                                    a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png")
+                                                        img(src="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png")
+                                                .user-name
+                                                    a(href=" ")
+                                            div.user-description
+                                                |
+                                            div.post-actions
+                                                button.clear.post-button
+                                                    i.fa.fa-weibo
+                                                button.clear.post-button
+                                                    i.fa.fa-qq
+                                            div.loop-count(venvy-video-loop,v-id=" ")
+                                                | 2000070 Loops
+                                    section.flex-view-item
+                                        div.venvy-video-container(style="background-image:url('http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png')",data-venvy-player-url=" ",data-venvy-player-id=" ",ng-click="playerModal($event)",data-venvy-player-title=" ")
+                                        div.item-info
+                                            div.avatar-user-name
+                                                .avatar
+                                                    a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                                        img(src="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png")
+                                                .user-name
+                                                    a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                            div.user-description
+                                                |
+                                            div.post-actions
+                                                button.clear.post-button
+                                                    i.fa.fa-weibo
+                                                button.clear.post-button
+                                                    i.fa.fa-qq
+                                            div.loop-count(venvy-video-loop,v-id=" ")
+                                                | 400070 Loops
+                                    section.flex-view-item
+                                        div.venvy-video-container(style="background-image:url('http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png')",data-venvy-player-url="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",data-venvy-player-id=" ",ng-click="playerModal($event)",data-venvy-player-title=" ")
+                                        div.item-info
+                                            div.avatar-user-name
+                                                .avatar
+                                                    a(href=" ",target="_blank")
+                                                        img(src="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png")
+                                                .user-name
+                                                    a(href=" ",target="_blank")
+                                            div.user-description
+                                                |
+                                            div.post-actions
+                                                button.clear.post-button
+                                                    i.fa.fa-weibo
+                                                button.clear.post-button
+                                                    i.fa.fa-qq
+                                            div.loop-count(venvy-video-loop,v-id=" ")
+                                                | 2000070 Loops
+                        article.venvy-module-block
+                            header.module-block-header
+                                a(href="javascript:void(0);")
+                                    i.fa.fa-user
+                                    h3 Featured Stars
+                            section.module-block-container
+                                section.module-block-item
+                                    .user-container
+                                        .user-info
+                                            .avatar
+                                                a(href=" ",target="_blank")
+                                                    img(src=" ")
+                                            .user-name
+                                                a(href=" ",target="_blank")
+                                    .user-container
+                                        .user-info
+                                            .avatar
+                                                a(href=" ",target="_blank")
+                                                    img(src=" ")
+                                            .user-name
+                                                a(href=" ",target="_blank")
+                                    .user-container
+                                        .user-info
+                                            .avatar
+                                                a(href=" ",target="_blank")
+                                                    img(src=" ")
+                                            .user-name
+                                                a(href=" ",target="_blank")
+                                    .user-container
+                                        .user-info
+                                            .avatar
+                                                a(href=" ",target="_blank")
+                                                    img(src=" ")
+                                            .user-name
+                                                a(href=" ",target="_blank")
+                        section.venvy-module-block
+                            header.module-block-header
+                                a(href="javascript:void(0);")
+                                    i.fa.fa-th-list
+                                    h3 热播
+                            section.module-block-container
+                                section.module-block-item.one-up
+                                    div.venvy-video-container(style="background-image:url(' ')",data-venvy-player-url=' ',data-venvy-player-id=" ",ng-click="playerModal($event)",data-venvy-player-title=" ")
+                                    div.item-info
+                                        div.user-name
+                                            a(href=" ",target="_blank")
+                                                h2
+                                        div.user-description
+                                            |
+                                        div.post-actions
+                                            button.clear.post-button
+                                                i.fa.fa-weibo
+                                            button.clear.post-button
+                                                i.fa.fa-qq
+                                        div.loop-count(venvy-video-loop,v-id=" ")
+                                            | 2000070 Loops
+                        article.venvy-module-block
+                            header.module-block-header
+                                a(href="javascript:void(0);")
+                                    div.img-icon
+                                        img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Places_trans@2x.png")
+                                    h3 Featured in Places
+                            section.module-block-container
+                                section.module-block-item.flex-view
+                                    section.flex-view-item
+                                        div.venvy-video-container(style="background-image:url('http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png')",data-venvy-player-url=' ',data-venvy-player-id=" ",ng-click="playerModal($event)",data-venvy-player-title=" ")
+                                        div.item-info
+                                            div.avatar-user-name
+                                                .avatar
+                                                    a(href=" ",target="_blank")
+                                                        img(src=" ")
+                                                .user-name
+                                                    a(href=" ",target="_blank")
+                                            div.user-description
+                                                |
+                                            div.post-actions
+                                                button.clear.post-button
+                                                    i.fa.fa-weibo
+                                                button.clear.post-button
+                                                    i.fa.fa-qq
+                                            div.loop-count(venvy-video-loop,v-id=" ")
+                                                | 20000370 Loops
+                                    section.flex-view-item
+                                        div.venvy-video-container(style="background-image:url(' ')",data-venvy-player-url=' ',data-venvy-player-id=" ",ng-click="playerModal($event)",data-venvy-player-title=" ")
+                                        div.item-info
+                                            div.avatar-user-name
+                                                .avatar
+                                                    a(href=" ",target="_blank")
+                                                        img(src=" ")
+                                                .user-name
+                                                    a(href=" ",target="_blank")
+                                            div.user-description
+                                                |
+                                            div.post-actions
+                                                button.clear.post-button
+                                                    i.fa.fa-weibo
+                                                button.clear.post-button
+                                                    i.fa.fa-qq
+                                            div.loop-count(venvy-video-loop,v-id=" ")
+                                                | 11232070 Loops
+                                    section.flex-view-item
+                                        div.venvy-video-container(style="background-image:url('http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png')",data-venvy-player-url=' ',data-venvy-player-id=" ",ng-click="playerModal($event)",data-venvy-player-title=" ")
+                                        div.item-info
+                                            div.avatar-user-name
+                                                .avatar
+                                                    a(href=" ",target="_blank")
+                                                        img(src=" ")
+                                                .user-name
+                                                    a(href=" ",target="_blank")
+                                            div.user-description
+                                                |
+                                            div.post-actions
+                                                button.clear.post-button
+                                                    i.fa.fa-weibo
+                                                button.clear.post-button
+                                                    i.fa.fa-qq
+                                            div.loop-count(venvy-video-loop,v-id=" ")
+                                                | 999292929 Loops
+                        article.venvy-module-block
+                            header.module-block-header
+                                a(href="javascript:void(0);")
+                                    i.fa.fa-user
+                                    h3 Featured Stars
+                            section.module-block-container
+                                section.module-block-item
+                                    .user-container
+                                        .user-info
+                                            .avatar
+                                                a(href=" ",target="_blank")
+                                                    img(src=" ")
+                                            .user-name
+                                                a(href=" ",target="_blank")
+                                    .user-container
+                                        .user-info
+                                            .avatar
+                                                a(href=" ",target="_blank")
+                                                    img(src=" ")
+                                            .user-name
+                                                a(href=" ",target="_blank")
+                                    .user-container
+                                        .user-info
+                                            .avatar
+                                                a(href=" ",target="_blank")
+                                                    img(src= " ")
+                                            .user-name
+                                                a(href=" ",target="_blank")
+                                    .user-container
+                                        .user-info
+                                            .avatar
+                                                a(href=" ")
+                                                    img(src=" http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png")
+                                            .user-name
+                                                a(href=" ",target="_blank")
+                        section.venvy-module-block
+                            header.module-block-header
+                                a(href="javascript:void(0);")
+                                    i.fa.fa-th-list
+                                    h3 热播
+                            section.module-block-container
+                                section.module-block-item.one-up
+                                    div.venvy-video-container(style="background-image:url('http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png')",data-venvy-player-url=' ',data-venvy-player-id=" ",ng-click="playerModal($event)",data-venvy-player-title=" ")
+                                    div.item-info
+                                        div.user-name
+                                            a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                                h2
+                                        div.user-description
+                                            |
+                                        div.post-actions
+                                            button.clear.post-button
+                                                i.fa.fa-weibo
+                                            button.clear.post-button
+                                                i.fa.fa-qq
+                                        div.loop-count(venvy-video-loop,v-id=" ")
+                                            | 2000070 Loops
+                        article.venvy-module-block
+                            header.module-block-header
+                                a(href="javascript:void(0);")
+                                    div.img-icon
+                                        img(src="http://7u2pv5.com2.z0.glb.qiniucdn.com/Places_trans@2x.png")
+                                    h3 Featured in Places
+                            section.module-block-container
+                                section.module-block-item.flex-view
+                                    section.flex-view-item
+                                        div.venvy-video-container(style="background-image:url('http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png')",data-venvy-player-url=' ',data-venvy-player-id=" ",ng-click="playerModal($event)",data-venvy-player-title=" ")
+                                        div.item-info
+                                            div.avatar-user-name
+                                                .avatar
+                                                    a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                                        img(src="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png")
+                                                .user-name
+                                                    a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                            div.user-description
+                                                |
+                                            div.post-actions
+                                                button.clear.post-button
+                                                    i.fa.fa-weibo
+                                                button.clear.post-button
+                                                    i.fa.fa-qq
+                                            div.loop-count(venvy-video-loop,v-id=" ")
+                                                | 909090070 Loops
+                                    section.flex-view-item
+                                        div.venvy-video-container(style="background-image:url('http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png')",data-venvy-player-url=' ',data-venvy-player-id=" ",ng-click="playerModal($event)",data-venvy-player-title=" ")
+                                        div.item-info
+                                            div.avatar-user-name
+                                                .avatar
+                                                    a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                                        img(src="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png")
+                                                .user-name
+                                                    a(href=" ",target="_blank")
+                                            div.user-description
+                                                |
+                                            div.post-actions
+                                                button.clear.post-button
+                                                    i.fa.fa-weibo
+                                                button.clear.post-button
+                                                    i.fa.fa-qq
+                                            div.loop-count(venvy-video-loop,v-id=" ")
+                                                | 44022070 Loops
+                                    section.flex-view-item
+                                        div.venvy-video-container(style="background-image:url('http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png')",data-venvy-player-url=' ',data-venvy-player-id=" ",ng-click="playerModal($event)",data-venvy-player-title=" ")
+                                        div.item-info
+                                            div.avatar-user-name
+                                                .avatar
+                                                    a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                                        img(src="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png")
+                                                .user-name
+                                                    a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                            div.user-description
+                                                |
+                                            div.post-actions
+                                                button.clear.post-button
+                                                    i.fa.fa-weibo
+                                                button.clear.post-button
+                                                    i.fa.fa-qq
+                                            div.loop-count(venvy-video-loop,v-id=" ")
+                                                | 78800070 Loops
+                        section.venvy-module-block
+                            header.module-block-header
+                                a(href="javascript:void(0);")
+                                    i.fa.fa-th-list
+                                    h3 热播
+                            section.module-block-container
+                                section.module-block-item.one-up
+                                    div.venvy-video-container(style="background-image:url('http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png')",data-venvy-player-url=' ',data-venvy-player-id=" ",ng-click="playerModal($event)",data-venvy-player-title=" ")
+                                    div.item-info
+                                        div.user-name
+                                            a(href="http://7xr9m4.com1.z0.glb.clouddn.com/%40%2Flive%2Fnew%2Fdesign%2F3ad1de40-4785-4e31-bd98-be80575c5553.png",target="_blank")
+                                                h2
+                                        div.user-description
+                                            |
+                                        div.post-actions
+                                            button.clear.post-button
+                                                i.fa.fa-weibo
+                                            button.clear.post-button
+                                                i.fa.fa-qq
+                                        div.loop-count(venvy-video-loop,v-id=" ")
+                                            | 2,003,330,070 Loops
+            footer
+                ul
+                    li
+                        a(href="http://weibo.com/venvyvideo",target="_blank")
+                            i.fa.fa-weibo
+                    li
+                        a(href="javascript:void(0);",target="_blank")
+                            i.fa.fa-qq
+                        .qrcode-box.venvy-box.top.center
+                          .container
+                            .qrcode
+                              img(src="assets/images/qr_qq.jpg")
+                    li
+                        a(href="javascript:void(0);",target="_blank")
+                            i.fa.fa-wechat
+                        .qrcode-box.venvy-box.top.center
+                          .container
+                            .qrcode
+                              img(src="assets/images/wechat.jpg")
+                    li
+                        a(href="http://blog.wantv.me",target="_blank") Blog
+                    li
+                        a(href="/about",target="_blank") About
+                    li
+                        a(href="http://www.jobtong.com/e/13398",target="_blank") Jobs
+                    li
+                        a(href="/contact",target="_blank") Contact
+                    li
+                        a(href="/term",target="_blank") Terms
+                    //li
+                    //    a(href="http://blog.wantv.me",target="_blank") Privacy
+                    //li
+                    //    a(href="http://blog.wantv.me",target="_blank") Rules
+                    li
+                        |© 2015 Powered by
+                        a(href="http://videojj.com",target="_blank") &nbsp; 云视链
+                    li
+                        |沪ICP备15042830-4号
+        script(src='bower_components/jquery/dist/jquery.js')
+        script(src='bower_components/angular/angular.js')
+        script(src='bower_components/angular-resource/angular-resource.js')
+        script(src='bower_components/angular-ui-router/release/angular-ui-router.js')
+        script(src="bower_components/moment/min/moment.min.js")
+        script(src="bower_components/moment/locale/zh-cn.js")
+        script(src="bower_components/moment/min/moment-with-locales.min.js")
+        script(src="bower_components/validator-js/validator.min.js")
+
+        script(src="bower_components/zeroclipboard/dist/ZeroClipboard.js")
+        script(src="bower_components/jquery-qrcode/jquery.qrcode.min.js")
+        script(src="bower_components/waypoints/lib/jquery.waypoints.min.js")
+        script(src="http://7xjfim.com2.z0.glb.qiniucdn.com/Iva.js")
+
+        script(src="app/app.js")
+        script(src="app/channels/channels.config.js")
+        script(src="app/channels/channels.controller.js")
+        script(src="app/global/global.controller.js")
+        script(src="app/global/global.config.js")
+        script(src="app/global/search.controller.js")
+        script(src="app/main/main.controller.js")
+        script(src="app/modal/playerModal.js")
+        script(src="app/navbar/navbar.controller.js")
+        script(src="app/video/video.config.js")
+        script(src="app/video/video.play.controller.js")
+        script(src="components/auth/auth.service.js")
+        script(src="components/auth/user.service.js")
+        script(src="components/filters/moment.filter.js")
+        script(src="components/global/iva.service.js")
+        script(src="components/global/util.help.service.js")
+        script(src="components/global/video.help.service.js")
+        script(src="components/modal/modal.service.js")
+        script(src="components/search/search.service.js")
+        script(src="components/video/channel.service.js")
+        script(src="components/video/video.service.js")
+        script.
+            document.addEventListener("WeixinJSBridgeReady", function () {
+                var videoObj = document.getElementById("sourcevid");
+                videoObj.play();
+            }, false);
+            var t = 0;
+            var opa = 1;
+
+            $(function () {
+                $('.channels-content a').hover(function () {
+                    $(this).parent().prev().text($(this).data('name'));
+                }, function () {
+                    $(this).parent().prev().text('Channels');
+                })
+                $('.venvy-wrapper').removeClass('channels-wrapper');
+                $('#venvy-header-navbar').addClass('transparent');
+                var videoObj = document.getElementById("sourcevid");
+                /*playerModal($('.venvy-video-container'), {
+                 $modal:$('.player-modal'),
+                 beforeCallBack: function () {
+                 videoObj.pause();
+                 },
+                 afterCallBack: function () {
+                 videoObj.play();
+                 }
+                 });*/
+                $(document).on('scroll', function () {
+                    var _bottom = $('.venvy-expore-header')[0].getBoundingClientRect().bottom;
+                    var _top = $(this).scrollTop();
+                    if (_top >= _bottom - $('#venvy-header-navbar').height()) {
+                        $('#venvy-header-navbar').removeClass('transparent');
+                    } else {
+                        $('#venvy-header-navbar').addClass('transparent');
+                    }
+                })
+
+            });
+            (function(){
+                //<![CDATA[
+                document.write('<script src="app/templates.js"><\/script>')
+                //]]>
+            }).call(this);
+            var _hmt = _hmt || [];
+            (function () {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?0044538d0a18d393c53da524283412ad";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+            ga('create', 'UA-61280226-1', 'auto');
+            ga('send', 'pageview');

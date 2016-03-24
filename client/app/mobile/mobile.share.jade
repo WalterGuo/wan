@@ -1,0 +1,67 @@
+div.venvy-video-container#card-player
+    div.poster(style="background-image: url({{cover}});")
+    div.play-control-box
+        i(class="icon-control-play")
+    video#video(webkit-playsinline,src="http://baobab.cdn.wandoujia.com/14374760453891.mp4",ng-src="{{url | UrlFilter}}",controls)
+section.share-content
+    header.share-title.article-box.share-border
+        .share-user-name
+            span.name {{user.name}}邀您来玩tv
+        .share-video-title
+            span {{seriesTitle}} {{duration}}/ 1'30"
+        .share-video-desc
+            span {{title}}{{seriesDesc}}
+    article.share-button.article-box.share-border
+        section.flex-item
+            div.item-content
+                a(href="javascript:void(0);")
+                    i.icon-heart
+                    span 赞
+        section.flex-item
+            div.item-content
+                a(href="javascript:void(0);")
+                    i.icon-bubbles
+                    span 评论
+        section.flex-item
+            div.item-content
+                a(href="javascript:void(0);")
+                    i.icon-share
+                    span 分享
+    footer.share-footer.article-box
+        section.flex-item
+            div.user-avatar-box
+                img(src="http://cdn.wantv.me/54fbc716fba26ab65aa24505/1430994990326.jpg")
+        section.flex-item
+            div.user-avatar-box
+                img(src="http://cdn.wantv.me/54fbc716fba26ab65aa24505/1430994990326.jpg")
+        section.flex-item
+            div.user-avatar-box
+                img(src="http://cdn.wantv.me/54fbc716fba26ab65aa24505/1430994990326.jpg")
+        section.flex-item
+            div.user-avatar-box
+                img(src="http://cdn.wantv.me/54fbc716fba26ab65aa24505/1430994990326.jpg")
+        section.flex-item
+            div.user-avatar-box
+                img(src="http://cdn.wantv.me/54fbc716fba26ab65aa24505/1430994990326.jpg")
+        section.flex-item
+            div.user-avatar-box
+                img(src="http://cdn.wantv.me/54fbc716fba26ab65aa24505/1430994990326.jpg")
+        section.flex-item
+            div.user-avatar-box
+                img(src="http://cdn.wantv.me/54fbc716fba26ab65aa24505/1430994990326.jpg")
+        section.flex-item
+            .item-content
+                a(href="javascript:void(0)")
+                    i.fa.fa-heart
+                    span 120
+section.recommend-box
+section.app-container
+    .container
+        .app-logo-container
+            img.app-logo(src="assets/images/download-wantv.png")
+            div
+                p.app-title 玩 tv
+                p.app-desc 视频2.0时代
+        .app-download-container
+            a(href="/app",target="_blank")
+                div 立即下载
